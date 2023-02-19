@@ -221,7 +221,7 @@ class _NavBarExampleState extends State<NavBarExample> {
                         ],
                       ),
 
-                      Image.asset("t3.png",height: MediaQuery.of(context).size.height*0.5,),
+                      Image.asset("assets/images/t3.png",height: MediaQuery.of(context).size.height*0.5,),
                     ],
                   ),
                 ),
