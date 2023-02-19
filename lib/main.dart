@@ -22,6 +22,8 @@ class NavBarApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //return MaterialApp(home: Frame(),);
+
     return  CupertinoApp(scrollBehavior: CupertinoScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.trackpad,PointerDeviceKind.touch, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
       theme: CupertinoThemeData(brightness: Brightness.dark),
       home: NavBarExample(),
@@ -356,7 +358,7 @@ class _NavBarExampleState extends State<NavBarExample> {
                               },
                               children:  instructions.map((e) => Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Container(decoration: BoxDecoration(border: Border.all(width: 5,color: Colors.white)),child: Image.asset(e["img"],height: MediaQuery.of(context).size.height*0.55,)),
+                                child: true?Frame( path: e["img"],): Container(decoration: BoxDecoration(border: Border.all(width: 5,color: Colors.white)),child: Image.asset(e["img"],height: MediaQuery.of(context).size.height*0.55,)),
                               )).toList(),
                             ),
                           ),
@@ -382,5 +384,59 @@ class _NavBarExampleState extends State<NavBarExample> {
         ),
       ),
     );
+  }
+}
+
+class Frame extends StatefulWidget {
+  String path ;
+  Frame({required this.path});
+
+  @override
+  State<Frame> createState() => _FrameState();
+}
+
+class _FrameState extends State<Frame> {
+
+  double height = 1471 * 0.6;
+  double width = 720 * 0.6;
+  double radious = 10.0 ;
+  @override
+  Widget build(BuildContext context) {
+
+
+    return Scaffold(backgroundColor: Colors.transparent,body: Center(child:
+    Container(margin: EdgeInsets.zero,
+    //  height: height,width: width,
+      decoration: BoxDecoration(
+         // border: Border.all(),
+          //borderRadius: BorderRadius.circular(radious+10),
+
+      ),
+      child:  ClipRRect(borderRadius: BorderRadius.circular(radious),
+        child: Container(margin: EdgeInsets.zero,
+         // height: height-7,width: width-7,
+          decoration: BoxDecoration(  color: Colors.black,border: Border.all(width: 2),borderRadius: BorderRadius.circular(radious)),child:
+        ClipRRect(borderRadius: BorderRadius.circular(radious),
+          child: Container(margin: EdgeInsets.zero,
+            height: height,width: width,
+            decoration: BoxDecoration(color: Colors.white,border: Border.all(width: 3,color: Colors.grey),borderRadius: BorderRadius.circular(radious)),child: ClipRRect(borderRadius: BorderRadius.circular(radious),
+            child: Stack(
+              children: [
+
+                Align(alignment: Alignment.center,child: Image.asset(widget.path,fit: BoxFit.cover,),),
+
+                Align(alignment: Alignment.topCenter,child: Container(margin: EdgeInsets.only(top: 8),child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(margin: EdgeInsets.only(left: 10),height: 13,width: 13,decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.white),),
+                  ],
+                ),
+                  decoration: BoxDecoration( color: Colors.black,borderRadius: BorderRadius.circular(20)),
+                  width: 80,height: 25,)),
+              ],
+            ),
+          ),),
+        ),),
+      ),),),);
+
   }
 }
