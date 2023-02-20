@@ -7,6 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled3/video_play.dart';
 
+import 'didi.dart';
+
 void main() => runApp(const NavBarApp());
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
   // Override behavior methods and getters like dragDevices
@@ -22,7 +24,7 @@ class NavBarApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //return MaterialApp(home: Frame(),);
+    //return MaterialApp(home: true?CreateApp(): Frame(path: 'assets/images/s3.jpg',),);
 
     return  CupertinoApp(scrollBehavior: CupertinoScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.trackpad,PointerDeviceKind.touch, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
       theme: CupertinoThemeData(brightness: Brightness.dark),
@@ -397,45 +399,52 @@ class Frame extends StatefulWidget {
 
 class _FrameState extends State<Frame> {
 
-  double height = 1471 * 0.6;
-  double width = 720 * 0.6;
-  double radious = 10.0 ;
+  double height = 1471 * 0.5;
+  double width = 720 * 0.5;
+  double radious = 25.0 ;
   @override
   Widget build(BuildContext context) {
 
 
     return Scaffold(backgroundColor: Colors.transparent,body: Center(child:
-    Container(margin: EdgeInsets.zero,
-    //  height: height,width: width,
+    Container(margin: EdgeInsets.all(0),
+      height: height,width: width,
       decoration: BoxDecoration(
          // border: Border.all(),
           //borderRadius: BorderRadius.circular(radious+10),
 
       ),
-      child:  ClipRRect(borderRadius: BorderRadius.circular(radious),
-        child: Container(margin: EdgeInsets.zero,
-         // height: height-7,width: width-7,
-          decoration: BoxDecoration(  color: Colors.black,border: Border.all(width: 2),borderRadius: BorderRadius.circular(radious)),child:
-        ClipRRect(borderRadius: BorderRadius.circular(radious),
-          child: Container(margin: EdgeInsets.zero,
-            height: height,width: width,
-            decoration: BoxDecoration(color: Colors.white,border: Border.all(width: 3,color: Colors.grey),borderRadius: BorderRadius.circular(radious)),child: ClipRRect(borderRadius: BorderRadius.circular(radious),
-            child: Stack(
-              children: [
+      child:  Stack(
+        children: [
+          ClipRRect(borderRadius: BorderRadius.circular(radious),
+            child: Container(margin: EdgeInsets.all(10),
+           //   height: height,width: width,
+              decoration: BoxDecoration(  color: Colors.black,
+                  border: Border.all(width: 2.5,color: Colors.white),
+                  borderRadius: BorderRadius.circular(radious)),child:
+            Container(margin: EdgeInsets.all(10),
+              //height: height,width: width,
+              decoration: BoxDecoration(color: Colors.transparent,
+                  border: Border.all(width: 0.5,color: Colors.white),
+                  borderRadius: BorderRadius.circular(radious * 0.5)),
+              child: Stack(
+                children: [
 
-                Align(alignment: Alignment.center,child: Image.asset(widget.path,fit: BoxFit.cover,),),
+                  ClipRRect( borderRadius: BorderRadius.circular(radious* 0.5),child: Image.asset(widget.path,fit: BoxFit.cover, height: height,width: width,)),
 
-                Align(alignment: Alignment.topCenter,child: Container(margin: EdgeInsets.only(top: 8),child: Row(mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(margin: EdgeInsets.only(left: 10),height: 13,width: 13,decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.white),),
-                  ],
-                ),
-                  decoration: BoxDecoration( color: Colors.black,borderRadius: BorderRadius.circular(20)),
-                  width: 80,height: 25,)),
-              ],
-            ),
-          ),),
-        ),),
+                  Align(alignment: Alignment.topCenter,child: Container(margin: EdgeInsets.only(top: 8),child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(margin: EdgeInsets.only(left: 10),height: 11,width: 11,decoration: BoxDecoration(shape: BoxShape.circle,color: Colors.white),),
+                    ],
+                  ),
+                    decoration: BoxDecoration( color: Colors.black,borderRadius: BorderRadius.circular(20)),
+                    width: 70,height: 20,)),
+                ],
+              ),),),
+          ),
+          Positioned(top: height*0.12+height*0.05,right: 0, child: Container(height: height*0.09,width: 5,decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.only(topRight: Radius.circular(2),bottomRight: Radius.circular(2))),)),
+          Positioned(top: height*0.18+height*0.05+height*0.07,right: 0, child: Container(height: height*0.02,width: 5,decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.only(topRight: Radius.circular(2),bottomRight: Radius.circular(2))),)),
+        ],
       ),),),);
 
   }
