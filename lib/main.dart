@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -11,6 +12,14 @@ import 'didi.dart';
 
 void main() => runApp(const NavBarApp());
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  static Matrix4 _pmat(num pv) {
+    return new Matrix4(
+      1.0, 0.0, 0.0, 0.0, //
+      0.0, 1.0, 0.0, 0.0, //
+      0.0, 0.0, 1.0, pv * 0.001, //
+      0.0, 0.0, 0.0, 1.0,
+    );
+  }
   // Override behavior methods and getters like dragDevices
   @override
   Set<PointerDeviceKind> get dragDevices => {
@@ -24,7 +33,11 @@ class NavBarApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //return MaterialApp(home: true?CreateApp(): Frame(path: 'assets/images/s3.jpg',),);
+
+
+
+
+    return MaterialApp(home: false?CreateApp(): ScreenMove(),);
 
     return  CupertinoApp(scrollBehavior: CupertinoScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.trackpad,PointerDeviceKind.touch, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
       theme: CupertinoThemeData(brightness: Brightness.dark),
@@ -92,6 +105,22 @@ class _NavBarExampleState extends State<NavBarExample> {
   final _curve = Curves.ease;
   ScrollPhysics mainScroll = AlwaysScrollableScrollPhysics();
   double scrollValue = 0.0 ;
+  List<String> imm = [
+    "assets/images/a2.jpg",
+    "assets/images/s3.jpg",
+    "assets/images/s4.jpg",
+    "assets/images/s5.jpg",
+    "assets/images/s6.jpg",
+    "assets/images/s7.jpg",
+    "assets/images/s8.jpg",
+    "assets/images/s9.jpg",
+    "assets/images/s13.jpg",
+    "assets/images/s17.jpg",
+    "assets/images/s14.jpg",
+    "assets/images/s15.jpg",
+    "assets/images/s9.jpg",
+
+  ];
   List instructions = [
     {"img":"assets/images/a1.jpg","title":"Scan and Setup","description":"Follow the laminated instruction document shipped with kits to create your own account. "},
     {"img":"assets/images/a2.jpg","title":"Login into the App","description":"You can login as many devices as you want,create as many users you need",},
@@ -447,5 +476,164 @@ class _FrameState extends State<Frame> {
         ],
       ),),),);
 
+  }
+}
+
+class ScreenMove extends StatefulWidget {
+  const ScreenMove({Key? key}) : super(key: key);
+
+  @override
+  State<ScreenMove> createState() => _ScreenMoveState();
+}
+
+class _ScreenMoveState extends State<ScreenMove> {
+  List<String> photos = [
+    ""
+  ];
+  Matrix4 perspective = Matrix4(
+    1.0, 0.0, 0.0, 0.0, //
+    0.0, 1.0, 0.0, 0.0, //
+    0.0, 0.0, 1.0, 1 * 0.001, //
+    0.0, 0.0, 0.0, 1.0,
+  );
+
+  double xMO = 0 ;
+  double yMO = 0 ;
+  double zMO = 0 ;
+
+  List<String> imm = [
+    "assets/images/a2.jpg",
+    "assets/images/s3.jpg",
+    "assets/images/s4.jpg",
+    "assets/images/s5.jpg",
+    "assets/images/s6.jpg",
+    "assets/images/s7.jpg",
+    "assets/images/s8.jpg",
+    "assets/images/s9.jpg",
+    "assets/images/s13.jpg",
+    "assets/images/s17.jpg",
+    "assets/images/s14.jpg",
+    "assets/images/s15.jpg",
+    "assets/images/s9.jpg",
+
+  ];
+  int index = 0 ;
+
+  randomThing(int v){
+
+  switch(v){
+    case 0:
+      xMO++;
+      yMO++;
+      break;
+      case 1:
+        yMO--;
+        zMO++;
+        break;
+    case 2:
+      zMO++;
+      xMO--;
+      break;
+    case 3:
+      xMO--;
+      yMO--;
+      break;
+      case 4:
+    yMO++;
+    zMO--;
+    break;
+    case 5:
+    zMO++;
+    xMO++;
+    break;
+    case 6:
+    xMO--;
+    yMO++;
+    break;
+  }
+
+  }
+
+  startAni() async {
+    int du = 30;
+    int timm = 1 ;
+    var rng = Random();
+    int v  =  rng.nextInt(5);
+    for(int i = 0; i <du;i++){
+      await Future.delayed(Duration(milliseconds: timm));
+      setState(() {
+
+        randomThing(v);
+
+      });
+
+    }
+    index++;
+    v  =  rng.nextInt(5);
+    for(int i = 0; i <du;i++){
+      await Future.delayed(Duration(milliseconds: timm));
+      setState(() {
+
+
+        randomThing(v);
+
+      });
+
+    }
+    index++;
+    v  =  rng.nextInt(5);
+    for(int i = 0; i <du;i++){
+      await Future.delayed(Duration(milliseconds: timm));
+      setState(() {
+        randomThing(v);
+
+      });
+    }
+    index++;
+    v  =  rng.nextInt(5);
+    for(int i = 0; i <du;i++){
+      await Future.delayed(Duration(milliseconds: timm));
+      setState(() {
+        randomThing(v);
+
+      });
+
+    }
+    index++;
+    v  =  rng.nextInt(5);
+
+    for(int i = 0; i <du;i++){
+      await Future.delayed(Duration(milliseconds: timm));
+      setState(() {
+        randomThing(v);
+
+      });
+
+    }
+    index++;
+    v  =  rng.nextInt(5);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    startAni();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return  Center(
+      child: new Transform(
+          child: new FittedBox(
+            fit: BoxFit.fill,
+            child:  Container(height: 1000,width:  1000,child: Frame(path: imm[index],)),
+          ),
+          alignment: FractionalOffset.center,
+          transform: perspective.scaled(1.0, 1.0, 1.0)
+            ..rotateX(pi - xMO * pi / 180)
+            ..rotateY(pi + yMO * pi / 180)
+            ..rotateZ(pi + zMO * pi / 180)
+      ),
+    );
   }
 }
