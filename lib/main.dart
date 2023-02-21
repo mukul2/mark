@@ -523,7 +523,7 @@ class _ScreenMoveState extends State<ScreenMove> {
 
   switch(v){
     case 0:
-      xMO++;
+      xMO ++;
       yMO++;
       break;
       case 1:
@@ -555,8 +555,8 @@ class _ScreenMoveState extends State<ScreenMove> {
   }
 
   startAni() async {
-    int du = 50;
-    int timm = 5 ;
+    int du = 30;
+    int timm = 15 ;
     var rng = Random();
     int v  =  rng.nextInt(5);
     for(int i = 0; i <du;i++){
