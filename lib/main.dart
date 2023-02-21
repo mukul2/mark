@@ -505,7 +505,6 @@ class _ScreenMoveState extends State<ScreenMove> {
     "assets/images/a2.jpg",
     "assets/images/s3.jpg",
     "assets/images/s4.jpg",
-    "assets/images/s5.jpg",
     "assets/images/s6.jpg",
     "assets/images/s7.jpg",
     "assets/images/s8.jpg",
@@ -612,6 +611,129 @@ class _ScreenMoveState extends State<ScreenMove> {
     }
     index++;
     v  =  rng.nextInt(5);
+    for(int i = 0; i <du;i++){
+      await Future.delayed(Duration(milliseconds: timm));
+      setState(() {
+        randomThing(v);
+
+      });
+
+    }
+    index++;
+    v  =  rng.nextInt(5);
+    for(int i = 0; i <du;i++){
+      await Future.delayed(Duration(milliseconds: timm));
+      setState(() {
+        randomThing(v);
+
+      });
+
+    }
+    index++;
+    v  =  rng.nextInt(5);
+    for(int i = 0; i <du;i++){
+      await Future.delayed(Duration(milliseconds: timm));
+      setState(() {
+        randomThing(v);
+
+      });
+
+    }
+    index++;
+    v  =  rng.nextInt(5);
+    for(int i = 0; i <du;i++){
+      await Future.delayed(Duration(milliseconds: timm));
+      setState(() {
+        randomThing(v);
+
+      });
+
+    }
+    index++;
+    v  =  rng.nextInt(5);
+    for(int i = 0; i <du;i++){
+      await Future.delayed(Duration(milliseconds: timm));
+      setState(() {
+        randomThing(v);
+
+      });
+
+    }
+    index++;
+    v  =  rng.nextInt(5);
+    for(int i = 0; i <du;i++){
+      await Future.delayed(Duration(milliseconds: timm));
+      setState(() {
+        randomThing(v);
+
+      });
+
+    }
+    index++;
+    v  =  rng.nextInt(5);
+
+    while(xMO>0 ){
+      xMO--;
+
+      setState(() {
+
+      });
+
+    }
+    await Future.delayed(Duration(milliseconds: timm));
+    while(yMO >0 ){
+
+      yMO--;
+
+      setState(() {
+
+      });
+
+    }
+    await Future.delayed(Duration(milliseconds: timm));
+    while( zMO >0){
+
+      zMO--;
+      setState(() {
+
+      });
+
+    }
+    await Future.delayed(Duration(milliseconds: timm));
+
+    //next round
+
+    while(xMO<0 ){
+      xMO++;
+
+      setState(() {
+
+      });
+
+    }
+    await Future.delayed(Duration(milliseconds: timm));
+    while(yMO <0 ){
+
+      yMO++;
+
+      setState(() {
+
+      });
+
+    }
+    await Future.delayed(Duration(milliseconds: timm));
+    while( zMO <0){
+
+      zMO++;
+      setState(() {
+
+      });
+
+    }
+
+
+    index = 0;
+    startAni();
   }
 
   @override
@@ -626,13 +748,13 @@ class _ScreenMoveState extends State<ScreenMove> {
       child: new Transform(
           child: new FittedBox(
             fit: BoxFit.fill,
-            child:  Container(height: 1000,width:  1000,child: Frame(path: imm[index],)),
+            child:  Container(height: MediaQuery.of(context).size.height,width:   MediaQuery.of(context).size.width,child: Frame(path: imm[index],)),
           ),
           alignment: FractionalOffset.center,
           transform: perspective.scaled(1.0, 1.0, 1.0)
-            ..rotateX(pi - xMO * pi / 180)
-            ..rotateY(pi + yMO * pi / 180)
-            ..rotateZ(pi + zMO * pi / 180)
+            ..rotateX(pi - xMO *0.1* pi / 180)
+            ..rotateY(pi + yMO *0.1* pi / 180)
+            ..rotateZ(pi + (zMO*0.1) * pi / 180)
       ),
     );
   }
