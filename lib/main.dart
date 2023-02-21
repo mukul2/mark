@@ -555,8 +555,8 @@ class _ScreenMoveState extends State<ScreenMove> {
   }
 
   startAni() async {
-    int du = 30;
-    int timm = 1 ;
+    int du = 50;
+    int timm = 5 ;
     var rng = Random();
     int v  =  rng.nextInt(5);
     for(int i = 0; i <du;i++){
