@@ -555,7 +555,7 @@ class _ScreenMoveState extends State<ScreenMove> {
 
   startAni() async {
     int du = 30;
-    int timm = 15 ;
+    int timm = 50 ;
     var rng = Random();
     int v  =  rng.nextInt(5);
     for(int i = 0; i <du;i++){
@@ -754,9 +754,9 @@ class _ScreenMoveState extends State<ScreenMove> {
           ),
           alignment: FractionalOffset.center,
           transform: perspective.scaled(1.0, 1.0, 1.0)
-            ..rotateX(pi - xMO *0.2* pi / 180)
-            ..rotateY(pi + yMO *0.2* pi / 180)
-            ..rotateZ(pi + (zMO*0.2) * pi / 180)
+            ..rotateX(pi - xMO *0.3* pi / 180)
+            ..rotateY(pi + yMO *0.3* pi / 180)
+            ..rotateZ(pi + (zMO*0.3) * pi / 180)
       ),
     );
   }
