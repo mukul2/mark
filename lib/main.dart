@@ -674,7 +674,7 @@ class _ScreenMoveState extends State<ScreenMove> {
 
     while(xMO>0 ){
       xMO--;
-
+      await Future.delayed(Duration(milliseconds: timm));
       setState(() {
 
       });
@@ -684,7 +684,7 @@ class _ScreenMoveState extends State<ScreenMove> {
     while(yMO >0 ){
 
       yMO--;
-
+      await Future.delayed(Duration(milliseconds: timm));
       setState(() {
 
       });
@@ -694,6 +694,7 @@ class _ScreenMoveState extends State<ScreenMove> {
     while( zMO >0){
 
       zMO--;
+      await Future.delayed(Duration(milliseconds: timm));
       setState(() {
 
       });
@@ -705,7 +706,7 @@ class _ScreenMoveState extends State<ScreenMove> {
 
     while(xMO<0 ){
       xMO++;
-
+      await Future.delayed(Duration(milliseconds: timm));
       setState(() {
 
       });
@@ -725,6 +726,7 @@ class _ScreenMoveState extends State<ScreenMove> {
     while( zMO <0){
 
       zMO++;
+      await Future.delayed(Duration(milliseconds: timm));
       setState(() {
 
       });
@@ -752,9 +754,9 @@ class _ScreenMoveState extends State<ScreenMove> {
           ),
           alignment: FractionalOffset.center,
           transform: perspective.scaled(1.0, 1.0, 1.0)
-            ..rotateX(pi - xMO *0.1* pi / 180)
-            ..rotateY(pi + yMO *0.1* pi / 180)
-            ..rotateZ(pi + (zMO*0.1) * pi / 180)
+            ..rotateX(pi - xMO *0.2* pi / 180)
+            ..rotateY(pi + yMO *0.2* pi / 180)
+            ..rotateZ(pi + (zMO*0.2) * pi / 180)
       ),
     );
   }
